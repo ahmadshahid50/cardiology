@@ -44,7 +44,7 @@ export default function AboutPage() {
             <Reveal className="lg:col-span-7">
               <SectionHeading
                 id="overview-heading"
-                eyebrow="Who we are"
+                eyebrow="Who we are?"
                 title="Comprehensive cardiac care across two practices"
               />
 
