@@ -1,0 +1,13 @@
+{
+  "name": "Drummoyne Advanced Cardiology and Southern Highlands Heart Centre",
+  "short_name": "Advanced Cardiology",
+  "description": "Patient focused cardiac care in Drummoyne and Bowral, New South Wales.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#13263a",
+  "icons": [
+    { "src": "/images/branding/heart-mark-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/branding/heart-mark-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
