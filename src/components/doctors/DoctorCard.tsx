@@ -6,55 +6,62 @@ import { cn } from '@/lib/cn';
 
 interface DoctorCardProps {
   doctor: Doctor;
+  /** `row` places the photograph beside the name; `stacked` puts it above. */
+  variant?: 'row' | 'stacked';
+  /**
+   * Heading level for the doctor's name. Use `h2` where the cards are the
+   * page's primary content and sit directly under the h1, and `h3` where they
+   * follow a section heading — so the document outline never skips a level.
+   */
+  headingLevel?: 'h2' | 'h3';
   className?: string;
 }
 
-export function DoctorCard({ doctor, className }: DoctorCardProps) {
+export function DoctorCard({
+  doctor,
+  variant = 'row',
+  headingLevel: Heading = 'h3',
+  className,
+}: DoctorCardProps) {
   const href = `/cardiologists/${doctor.slug}`;
+  const stacked = variant === 'stacked';
 
   return (
     <article
       className={cn(
-        'group relative flex flex-col overflow-hidden rounded-lg border border-ink-100 bg-white',
-        'transition-[border-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-        'hover:-translate-y-0.5 hover:border-ink-200 hover:shadow-card focus-within:shadow-card',
+        'group relative overflow-hidden rounded-xl border border-ink-100 bg-white',
+        'transition-[border-color,box-shadow,transform] duration-300 ease-out-soft',
+        'hover:-translate-y-1 hover:border-crimson-200 hover:shadow-card focus-within:shadow-card',
+        stacked ? 'flex flex-col' : 'flex flex-col sm:flex-row sm:items-stretch',
         className
       )}
     >
-      <div className="relative aspect-4/5 overflow-hidden bg-ink-100 sm:aspect-3/4">
+      <div
+        className={cn(
+          'relative shrink-0 overflow-hidden bg-ink-100',
+          stacked ? 'aspect-4/5 w-full' : 'aspect-4/5 w-full sm:aspect-auto sm:w-56 lg:w-64'
+        )}
+      >
         <Image
           src={doctor.image.src}
           alt={doctor.image.alt}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover object-top transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+          sizes={stacked ? '(max-width: 640px) 100vw, 33vw' : '(max-width: 640px) 100vw, 260px'}
+          className="object-cover object-top transition-transform duration-600 ease-out-soft group-hover:scale-[1.04]"
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-serif text-xl font-semibold text-ink-900">
+      <div className="flex flex-1 flex-col justify-center p-6 sm:p-7">
+        <Heading className="font-serif text-xl leading-snug font-semibold text-ink-900">
           <Link href={href} className="rounded-sm before:absolute before:inset-0 before:content-['']">
             {doctor.name}
           </Link>
-        </h3>
+        </Heading>
 
-        <p className="mt-1 text-[0.8125rem] font-semibold tracking-[0.06em] text-crimson-700 uppercase">
-          {doctor.qualifications}
-        </p>
-
-        <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-600">{doctor.title}</p>
-
-        <ul className="mt-4 flex-1 space-y-1.5 border-t border-ink-100 pt-4">
-          {doctor.appointments.slice(0, 2).map((appointment) => (
-            <li key={appointment} className="flex items-start gap-2.5 text-sm text-ink-600">
-              <Icon name="check" size={14} strokeWidth={2.25} className="mt-1 shrink-0 text-crimson-600" />
-              {appointment}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">{doctor.title}</p>
 
         <span className="mt-5 inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold text-crimson-700">
-          View full profile
+          View Profile
           <Icon
             name="arrow-right"
             size={17}

@@ -1,141 +1,90 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
-import { locations, openingHours, telHref } from '@/data/site';
+import { heroValues, locations } from '@/data/site';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white" aria-labelledby="hero-heading">
-      <div className="relative lg:grid lg:min-h-[min(78vh,680px)] lg:grid-cols-12 lg:items-center">
-        {/* Copy */}
-        <div className="relative z-10 lg:col-span-6 xl:col-span-5">
-          <Container className="py-14 sm:py-18 lg:mr-0 lg:ml-auto lg:max-w-152 lg:py-20 lg:pr-12 xl:py-24">
-            <p className="rule-crimson text-[0.8125rem] font-semibold tracking-[0.14em] text-crimson-600 uppercase">
-              Drummoyne &amp; Southern Highlands
-            </p>
-
-            <h1
-              id="hero-heading"
-              className="mt-6 text-[2.5rem] leading-[1.08] tracking-[-0.022em] sm:text-5xl xl:text-[3.5rem]"
-            >
-              Comprehensive cardiac care,{' '}
-              <span className="text-crimson-700">close to home</span>
-            </h1>
-
-            <p className="mt-6 text-lg leading-relaxed text-ink-600">
-              Our goal is to provide patient focused high quality clinical care with warmth and
-              compassion. We have expertise in each of the major disciplines of cardiology, and our
-              cardiologists are affiliated with public and private hospitals.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href="/make-an-appointment" size="lg">
-                <Icon name="calendar" size={18} />
-                Book an Appointment
-              </Button>
-              <Button href="/services" size="lg" variant="secondary">
-                Explore our services
-                <Icon name="arrow-right" size={18} />
-              </Button>
-            </div>
-
-            <dl className="mt-10 grid gap-x-8 gap-y-4 border-t border-ink-100 pt-8 sm:grid-cols-2">
-              {locations.map((location) => (
-                <div key={location.slug}>
-                  <dt className="text-[0.8125rem] font-semibold tracking-[0.08em] text-ink-500 uppercase">
-                    {location.shortName}
-                  </dt>
-                  <dd className="mt-1.5">
-                    <a
-                      href={telHref(location.phones[0]!)}
-                      className="inline-flex items-center gap-2 rounded-sm font-serif text-xl font-semibold text-ink-900 underline-offset-4 transition-colors hover:text-crimson-700 hover:underline"
-                    >
-                      <Icon name="phone" size={17} className="text-crimson-600" />
-                      {location.phones[0]}
-                    </a>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </Container>
-        </div>
-
-        {/* Photograph */}
-        <div className="relative lg:col-span-6 lg:h-full xl:col-span-7">
-          <div className="relative aspect-4/3 w-full sm:aspect-video lg:absolute lg:inset-0 lg:aspect-auto lg:h-full">
-            <Image
-              src="/images/hero/cardiologist-holding-heart-hero.webp"
-              alt="A cardiac clinician in scrubs and stethoscope holding a model of a human heart"
-              fill
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-[68%_center] lg:object-[60%_center]"
-            />
-            {/* Blends the photograph into the copy column without dimming the subject. */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 hidden bg-linear-to-r from-white via-white/55 to-transparent lg:block lg:w-2/5"
-            />
-          </div>
-        </div>
+    <section className="relative isolate overflow-hidden bg-ink-900" aria-labelledby="hero-heading">
+      {/* Photograph fills the section; the copy sits over a scrim on the left. */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/hero/cardiologist-holding-heart-hero.webp"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-[72%_center] lg:object-[58%_center]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-r from-ink-950/92 via-ink-950/72 to-ink-950/25 lg:from-ink-950/94 lg:via-ink-950/70 lg:to-transparent"
+        />
       </div>
 
-      {/* Quick facts strip */}
-      <div className="relative z-10 border-t border-ink-100 bg-ink-50">
-        <Container size="wide">
-          <ul className="grid divide-ink-200 sm:grid-cols-3 sm:divide-x">
-            {[
-              {
-                icon: 'clock' as const,
-                label: openingHours.days,
-                value: openingHours.hours,
-              },
-              {
-                icon: 'pin' as const,
-                label: 'Two locations',
-                value: `${locations[0]!.suburb} & ${locations[1]!.suburb}`,
-                href: '/contact',
-              },
-              {
-                icon: 'users' as const,
-                label: 'Consultant cardiologists',
-                value: 'General, interventional & electrophysiology',
-                href: '/cardiologists',
-              },
-            ].map((item) => {
-              const content = (
-                <>
-                  <Icon name={item.icon} size={22} className="shrink-0 text-crimson-600" />
-                  <span className="min-w-0">
-                    <span className="block text-[0.8125rem] font-semibold tracking-[0.08em] text-ink-500 uppercase">
-                      {item.label}
-                    </span>
-                    <span className="mt-0.5 block font-medium text-ink-900">{item.value}</span>
-                  </span>
-                </>
-              );
+      <Container size="wide">
+        <div className="max-w-xl py-20 sm:py-28 lg:max-w-2xl lg:py-36">
+          <p className="text-[0.8125rem] font-semibold tracking-[0.18em] text-crimson-300 uppercase">
+            Cardiology Care
+          </p>
 
-              return (
-                <li key={item.label} className="border-b border-ink-200 sm:border-b-0">
-                  {item.href ? (
-                    <Link
-                      href={item.href}
-                      className="flex items-center gap-3.5 px-1 py-5 transition-colors hover:bg-white sm:px-6"
-                    >
-                      {content}
-                    </Link>
-                  ) : (
-                    <div className="flex items-center gap-3.5 px-1 py-5 sm:px-6">{content}</div>
+          <h1
+            id="hero-heading"
+            className="mt-5 text-[2.5rem] leading-[1.06] tracking-[-0.025em] text-white sm:text-[3.25rem] lg:text-[4rem]"
+          >
+            Expert cardiology care,
+            <span className="block text-crimson-300">with a personal approach</span>
+          </h1>
+
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-200">
+            Specialist cardiac assessment, diagnostics and procedures across our Drummoyne and
+            Bowral rooms.
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <Button href="/make-an-appointment" size="lg">
+              <Icon name="calendar" size={18} />
+              Book an Appointment
+            </Button>
+            <Button href="/services" size="lg" variant="onDark">
+              View Our Services
+              <Icon name="arrow-right" size={18} />
+            </Button>
+          </div>
+
+          {/* Location pills */}
+          <ul className="mt-9 flex flex-wrap gap-3">
+            {locations.map((location) => (
+              <li key={location.slug}>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/8 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+                  <Icon name="pin" size={15} className="text-crimson-300" />
+                  {location.suburb}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Values strip. Separators are trailing, not leading, so a wrapped
+              item never starts a line with an orphaned divider. */}
+          <div className="mt-12 flex items-start gap-5 border-t border-white/15 pt-6">
+            <span aria-hidden="true" className="mt-2 h-px w-10 shrink-0 bg-crimson-500" />
+            <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[0.75rem] font-semibold tracking-[0.16em] text-ink-300 uppercase">
+              {heroValues.map((value, i) => (
+                <li key={value}>
+                  {value}
+                  {i < heroValues.length - 1 && (
+                    <span aria-hidden="true" className="ml-4 text-white/25">
+                      |
+                    </span>
                   )}
                 </li>
-              );
-            })}
-          </ul>
-        </Container>
-      </div>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Container>
     </section>
   );
 }

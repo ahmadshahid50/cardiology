@@ -1,4 +1,10 @@
-import type { Faq, JourneyStep, PatientInfoSection } from '@/lib/types';
+import type {
+  Faq,
+  JourneyStep,
+  PatientInfoSection,
+  PatientResource,
+  PracticeValue,
+} from '@/lib/types';
 
 /**
  * Patient-facing explanatory content.
@@ -165,29 +171,56 @@ export const patientJourney: JourneyStep[] = [
  * affiliations, on-site facilities, and the practice's stated commitment to
  * patient-focused care delivered with warmth and compassion.
  */
-export const practiceValues: { title: string; description: string; icon: string }[] = [
+export const practiceValues: PracticeValue[] = [
   {
-    title: 'Expertise across cardiology',
-    description:
-      'We have expertise in each of the major disciplines of cardiology, from general consultation and diagnostic imaging through to interventional and electrophysiology procedures.',
+    title: 'Expertise',
+    description: 'Expertise in each of the major disciplines of cardiology.',
     icon: 'shield',
   },
   {
-    title: 'Hospital-affiliated cardiologists',
-    description:
-      'Our cardiologists are affiliated with public and private hospitals, and hold teaching appointments at Australian universities.',
+    title: 'Hospital affiliated',
+    description: 'Our cardiologists are affiliated with public and private hospitals.',
     icon: 'users',
   },
   {
     title: 'On-site facilities',
-    description:
-      'With on-site state of the art facilities and friendly staff, we strive to make your experience as pleasant as possible.',
+    description: 'State of the art facilities and friendly staff at both of our rooms.',
     icon: 'clipboard',
   },
   {
-    title: 'Patient-focused care',
-    description:
-      'Our goal is to provide patient focused high quality clinical care with warmth and compassion, and comprehensive cardiac care you can rely on.',
+    title: 'Compassionate care',
+    description: 'Patient focused clinical care, delivered with warmth and compassion.',
     icon: 'stethoscope',
+  },
+];
+
+/**
+ * Entry points into the practice's patient-facing information. Each links to
+ * content that exists on this site — nothing is advertised that is not here.
+ */
+export const patientResources: PatientResource[] = [
+  {
+    title: 'Before your appointment',
+    description: 'What to bring, and how to arrange a referral.',
+    href: '/make-an-appointment',
+    icon: 'clipboard',
+  },
+  {
+    title: 'Your tests explained',
+    description: 'What an echocardiogram, ECG or Holter monitor involves.',
+    href: '/patient-information',
+    icon: 'ultrasound',
+  },
+  {
+    title: 'Common questions',
+    description: 'Answers to the questions patients ask us most.',
+    href: '/patient-information#patient-faqs',
+    icon: 'stethoscope',
+  },
+  {
+    title: 'Find our rooms',
+    description: 'Addresses, opening hours and directions.',
+    href: '/contact',
+    icon: 'pin',
   },
 ];

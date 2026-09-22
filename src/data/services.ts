@@ -45,6 +45,7 @@ export const services: Service[] = [
   {
     slug: 'cardiac-consultation',
     name: 'Cardiac Consultation',
+    tagline: 'Assessment and review with a cardiologist.',
     summary:
       'A consultation with a cardiologist to assess your heart health and plan any further testing.',
     description:
@@ -59,6 +60,7 @@ export const services: Service[] = [
   {
     slug: 'ecg',
     name: 'ECG',
+    tagline: 'A recording of your heart’s electrical activity.',
     summary: 'A recording of the electrical activity of your heart, taken at rest.',
     description:
       'An electrocardiogram (ECG) records the electrical activity of the heart through small electrodes placed on the chest, arms and legs. The test is painless, takes only a few minutes, and is performed while you rest.',
@@ -73,6 +75,7 @@ export const services: Service[] = [
   {
     slug: 'stress-ecg',
     name: 'Stress ECG',
+    tagline: 'An ECG recorded while you exercise.',
     summary: 'An ECG recorded while you exercise on a treadmill or exercise bike.',
     description:
       'A stress ECG records the electrical activity of the heart while you exercise, usually on a treadmill or exercise bike. Your heart rhythm, blood pressure and symptoms are monitored throughout the test by clinical staff.',
@@ -87,6 +90,7 @@ export const services: Service[] = [
   {
     slug: 'echocardiogram',
     name: 'Echocardiogram',
+    tagline: 'An ultrasound scan of your heart.',
     summary: 'An ultrasound scan that shows the structure and function of your heart.',
     description:
       'An echocardiogram is an ultrasound scan of the heart. It is a diagnostic tool that allows the chambers, valves and pumping function of the heart to be assessed. The scan uses ultrasound rather than radiation, and is performed by a sonographer using a probe on the chest.',
@@ -100,6 +104,7 @@ export const services: Service[] = [
   {
     slug: 'stress-echocardiogram',
     name: 'Stress Echocardiogram',
+    tagline: 'Heart imaging at rest and under stress.',
     summary: 'An echocardiogram performed at rest and again under stress.',
     description:
       'Echocardiography at rest and during stress allows visualisation of left ventricular function, and of valvular structure and function. Echocardiography can be performed during or after several different types of physical stress. The test allows the heart to be assessed both at rest and while it is working harder.',
@@ -113,6 +118,7 @@ export const services: Service[] = [
   {
     slug: '24-hour-blood-pressure-monitoring',
     name: '24hr Blood Pressure Monitoring',
+    tagline: 'Blood pressure recorded across a full day.',
     summary: 'A portable monitor that records your blood pressure across a full day.',
     description:
       'A small monitor is worn for 24 hours and records your blood pressure at set intervals while you go about your normal activities, including overnight. It provides a picture of your blood pressure outside the clinic setting.',
@@ -127,6 +133,7 @@ export const services: Service[] = [
   {
     slug: 'holter-monitoring',
     name: '24 Hour ECG (Holter) Monitoring',
+    tagline: 'Continuous heart rhythm recording.',
     summary: 'A portable device that records your heart rhythm continuously.',
     description:
       'A Holter monitor is a small portable device that records your heart rate continuously. It performs the same function as an ECG, but monitors the heartbeat continuously rather than at a single point in time. The device is attached to the chest with leads that record your heartbeat while you continue your everyday activities. Because it is connected for much longer than a standard ECG, it can detect disturbances in heart rhythm that a resting ECG may not capture.',
@@ -140,6 +147,7 @@ export const services: Service[] = [
   {
     slug: 'coronary-angiography-and-stenting',
     name: 'Coronary Angiography and Stenting',
+    tagline: 'Imaging of the coronary arteries, with stenting where indicated.',
     summary: 'Catheter-based imaging of the coronary arteries, with stenting where indicated.',
     description:
       'Coronary angiography is a catheter-based procedure used to image the coronary arteries. Where a narrowing is identified, it may be treated during the same procedure with angioplasty and the placement of a stent. These procedures are performed in hospital.',
@@ -154,6 +162,7 @@ export const services: Service[] = [
   {
     slug: 'device-checks',
     name: 'Device Checks',
+    tagline: 'Review of an implanted pacemaker or defibrillator.',
     summary: 'Review of an implanted pacemaker or defibrillator to confirm it is working correctly.',
     description:
       'A device check reviews the function, settings and battery status of an implanted pacemaker or defibrillator, and downloads the information the device has recorded since your last visit.',
@@ -164,6 +173,7 @@ export const services: Service[] = [
   {
     slug: 'pacemaker-insertion',
     name: 'Pacemaker Insertion',
+    tagline: 'Implantation of a pacemaker.',
     summary: 'Implantation of a pacemaker to treat a slow or irregular heart rhythm.',
     description:
       'A pacemaker is a small implanted device used in the management of slow or irregular heart rhythms. Dr Imran Kassam has expertise in device implantation and performs his procedural work at Macquarie University Hospital.',
@@ -174,6 +184,7 @@ export const services: Service[] = [
   {
     slug: 'defibrillator-insertion',
     name: 'Defibrillator Insertion',
+    tagline: 'Implantation of a defibrillator.',
     summary: 'Implantation of a defibrillator for patients at risk of dangerous heart rhythms.',
     description:
       'An implantable defibrillator is a device used in the management of patients at risk of dangerous heart rhythms. Dr Imran Kassam has expertise in device implantation and performs his procedural work at Macquarie University Hospital.',
@@ -184,6 +195,7 @@ export const services: Service[] = [
   {
     slug: 'electrophysiology-studies',
     name: 'Electrophysiology Studies',
+    tagline: 'Mapping the heart’s electrical conduction.',
     summary: 'A catheter-based study that maps the electrical conduction of the heart.',
     description:
       'An electrophysiology study is a catheter-based investigation used to assess the electrical conduction system of the heart and to identify the origin of an abnormal heart rhythm. Dr Imran Kassam has expertise in electrophysiological studies.',
@@ -194,6 +206,7 @@ export const services: Service[] = [
   {
     slug: 'ablation-therapy',
     name: 'Ablation Therapy',
+    tagline: 'Catheter treatment for certain abnormal rhythms.',
     summary: 'A catheter-based treatment for certain abnormal heart rhythms.',
     description:
       'Ablation therapy is a catheter-based treatment used for certain abnormal heart rhythms. It is generally performed following, or alongside, an electrophysiology study. Dr Imran Kassam has expertise in ablative therapy.',

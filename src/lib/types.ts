@@ -51,7 +51,9 @@ export interface NavItem {
 export interface Service {
   slug: Slug;
   name: string;
-  /** One-line summary used on cards and in listings. */
+  /** Very short factual line for homepage cards — a few words only. */
+  tagline: string;
+  /** One-line summary used in listings and as the detail-page lede. */
   summary: string;
   /** Longer factual description. Migrated or factually neutral. */
   description: string;
@@ -107,6 +109,21 @@ export interface PatientInfoSection {
   heading: string;
   body: string[];
   subsections?: { heading: string; body: string[] }[];
+}
+
+/** A reason patients are referred to the practice. */
+export interface PracticeValue {
+  title: string;
+  description: string;
+  icon: IconName;
+}
+
+/** An entry point into the practice's patient-facing information. */
+export interface PatientResource {
+  title: string;
+  description: string;
+  href: string;
+  icon: IconName;
 }
 
 export type IconName =

@@ -17,7 +17,17 @@ export const site = {
   /** Update to the production domain before launch. */
   url: 'https://www.advancedcardiology.com.au',
   locale: 'en_AU',
+  /** Agency credit shown in the footer. Set to null to remove it. */
+  credit: { label: 'NextClick', href: 'https://nextclickcorp.com.au' },
 } as const;
+
+/**
+ * Three-word summary of the practice's stated approach, used as a quiet strip
+ * beneath the hero. Each word is drawn from the practice's own description of
+ * its care — expertise across cardiology, compassion and warmth, and continuity
+ * through hospital affiliations and ongoing review.
+ */
+export const heroValues = ['Expertise', 'Compassion', 'Continuity of care'] as const;
 
 export const openingHours: OpeningHours = {
   label: 'Working hours',
@@ -77,7 +87,7 @@ export function telHref(phone: string): string {
 export const primaryNav: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about-us' },
-  { label: 'Our Cardiologists', href: '/cardiologists' },
+  { label: 'Cardiologists', href: '/cardiologists' },
   { label: 'Services', href: '/services' },
   { label: 'Patient Information', href: '/patient-information' },
   { label: 'Contact', href: '/contact' },
@@ -85,14 +95,14 @@ export const primaryNav: NavItem[] = [
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
-    title: 'Practice',
+    title: 'Quick Links',
     items: [
       { label: 'Home', href: '/' },
-      { label: 'About Us', href: '/about-us' },
-      { label: 'Our Cardiologists', href: '/cardiologists' },
+      { label: 'About', href: '/about-us' },
+      { label: 'Cardiologists', href: '/cardiologists' },
+      { label: 'Services', href: '/services' },
       { label: 'Patient Information', href: '/patient-information' },
-      { label: 'Make an Appointment', href: '/make-an-appointment' },
-      { label: 'Contact Us', href: '/contact' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
 ];

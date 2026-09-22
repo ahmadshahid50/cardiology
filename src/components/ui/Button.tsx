@@ -8,7 +8,7 @@ type Size = 'sm' | 'md' | 'lg';
 const base =
   'inline-flex items-center justify-center gap-2 rounded-md font-sans font-semibold ' +
   'transition-[background-color,color,border-color,box-shadow,transform] duration-200 ' +
-  'ease-[cubic-bezier(0.22,1,0.36,1)] active:translate-y-px ' +
+  'ease-out-soft active:translate-y-px ' +
   'disabled:pointer-events-none disabled:opacity-55';
 
 const variants: Record<Variant, string> = {

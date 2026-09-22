@@ -36,7 +36,7 @@ export default function CardiologistsPage() {
             {doctors.map((doctor, i) => (
               <li key={doctor.slug} className="flex">
                 <Reveal delay={i * 90} className="flex w-full">
-                  <DoctorCard doctor={doctor} className="w-full" />
+                  <DoctorCard doctor={doctor} headingLevel="h2" className="w-full" />
                 </Reveal>
               </li>
             ))}
