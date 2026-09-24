@@ -41,7 +41,7 @@ export default function MakeAnAppointmentPage() {
       />
 
       {/* Call the rooms directly */}
-      <section className="border-b border-ink-100 bg-ink-50 py-12 sm:py-14" aria-labelledby="call-heading">
+      <section className="border-b border-ink-100 bg-frost-50 py-12 sm:py-14" aria-labelledby="call-heading">
         <Container size="wide">
           <h2 id="call-heading" className="text-center font-serif text-2xl font-semibold text-ink-900">
             The quickest way to book is to call us
@@ -65,7 +65,7 @@ export default function MakeAnAppointmentPage() {
                       href={telHref(phone)}
                       className="flex items-center justify-center gap-2.5 rounded-md border border-ink-200 px-4 py-3 font-serif text-lg font-semibold text-ink-900 transition-colors hover:border-crimson-600 hover:bg-crimson-50 hover:text-crimson-700"
                     >
-                      <Icon name="phone" size={18} className="text-crimson-600" />
+                      <Icon name="phone" size={18} className="text-crimson-500" />
                       {phone}
                     </a>
                   ))}
@@ -101,14 +101,14 @@ export default function MakeAnAppointmentPage() {
                   }
                 />
 
-                <div className="mt-8 rounded-lg border border-ink-100 bg-ink-50 p-6">
+                <div className="mt-8 rounded-lg border border-ink-100 bg-frost-50 p-6">
                   <h3 className="font-serif text-lg font-semibold text-ink-900">
                     What to bring to your appointment
                   </h3>
                   <ul className="mt-4 space-y-3">
                     {bringItems.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-[0.9375rem] text-ink-700">
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-crimson-50 text-crimson-600">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-crimson-50 text-crimson-500">
                           <Icon name="check" size={12} strokeWidth={2.5} />
                         </span>
                         {item}
@@ -145,7 +145,7 @@ export default function MakeAnAppointmentPage() {
       </section>
 
       {/* What happens next */}
-      <section className="bg-ink-50 py-16 sm:py-20" aria-labelledby="next-steps-heading">
+      <section className="bg-frost-50 py-16 sm:py-20" aria-labelledby="next-steps-heading">
         <Container size="wide">
           <Reveal>
             <SectionHeading

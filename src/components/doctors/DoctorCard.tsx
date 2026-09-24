@@ -29,43 +29,43 @@ export function DoctorCard({
   return (
     <article
       className={cn(
-        'group relative overflow-hidden rounded-xl border border-ink-100 bg-white',
+        'group relative rounded-lg border border-ink-100 bg-white',
         'transition-[border-color,box-shadow,transform] duration-300 ease-out-soft',
-        'hover:-translate-y-1 hover:border-crimson-200 hover:shadow-card focus-within:shadow-card',
-        stacked ? 'flex flex-col' : 'flex flex-col sm:flex-row sm:items-stretch',
+        'hover:-translate-y-0.5 hover:border-crimson-200 hover:shadow-card focus-within:shadow-card',
+        stacked ? 'flex flex-col overflow-hidden' : 'flex flex-row items-center gap-4 p-4 sm:gap-6 sm:p-5',
         className
       )}
     >
       <div
         className={cn(
           'relative shrink-0 overflow-hidden bg-ink-100',
-          stacked ? 'aspect-4/5 w-full' : 'aspect-4/5 w-full sm:aspect-auto sm:w-56 lg:w-64'
+          stacked ? 'aspect-4/5 w-full' : 'aspect-square w-24 rounded-md sm:w-30 lg:w-33'
         )}
       >
         <Image
           src={doctor.image.src}
           alt={doctor.image.alt}
           fill
-          sizes={stacked ? '(max-width: 640px) 100vw, 33vw' : '(max-width: 640px) 100vw, 260px'}
+          sizes={stacked ? '(max-width: 640px) 100vw, 33vw' : '140px'}
           className="object-cover object-top transition-transform duration-600 ease-out-soft group-hover:scale-[1.04]"
         />
       </div>
 
-      <div className="flex flex-1 flex-col justify-center p-6 sm:p-7">
-        <Heading className="font-serif text-xl leading-snug font-semibold text-ink-900">
+      <div className={cn('flex flex-1 flex-col justify-center', stacked && 'p-6 sm:p-7')}>
+        <Heading className="font-serif text-[1.125rem] leading-snug font-bold text-ink-900">
           <Link href={href} className="rounded-sm before:absolute before:inset-0 before:content-['']">
             {doctor.name}
           </Link>
         </Heading>
 
-        <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">{doctor.title}</p>
+        <p className="mt-2 text-[0.875rem] leading-relaxed text-ink-500">{doctor.title}</p>
 
-        <span className="mt-5 inline-flex items-center gap-1.5 text-[0.9375rem] font-semibold text-crimson-700">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-ink-900 underline decoration-ink-300 underline-offset-[5px] transition-colors group-hover:text-crimson-600 group-hover:decoration-crimson-400">
           View Profile
           <Icon
             name="arrow-right"
-            size={17}
-            className="transition-transform duration-300 group-hover:translate-x-1"
+            size={16}
+            className="no-underline transition-transform duration-300 group-hover:translate-x-0.5"
           />
         </span>
       </div>

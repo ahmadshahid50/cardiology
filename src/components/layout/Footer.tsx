@@ -1,48 +1,43 @@
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
-import { Logo } from '@/components/ui/Logo';
-import { PracticeMark } from '@/components/ui/PracticeMark';
-import { footerNav, locations, openingHours, site, telHref } from '@/data/site';
-import { services } from '@/data/services';
-
-const footerServices = services.slice(0, 6);
+import { PracticeLogo } from '@/components/ui/PracticeLogo';
+import { ScriptMark } from '@/components/ui/ScriptMark';
+import { footerNav, locations, site, telHref } from '@/data/site';
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink-950 text-ink-300">
-      <Container size="wide" className="py-16 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+    <footer className="bg-ink-900 text-ink-300">
+      <Container size="wide" className="py-14 lg:py-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Practice */}
           <div className="lg:col-span-4">
-            <Logo tone="light" width={190} />
-            <p className="mt-6 max-w-sm text-[0.9375rem] leading-relaxed text-ink-400">
-              Specialist cardiology care for the Drummoyne and Southern Highlands communities, with
-              expertise across each of the major disciplines of cardiology.
-            </p>
-            <p className="mt-6 flex items-start gap-2.5 text-[0.9375rem]">
-              <Icon name="clock" size={17} className="mt-0.5 shrink-0 text-crimson-400" />
-              <span className="text-ink-400">
-                {openingHours.days}
-                <span className="block text-white">{openingHours.hours}</span>
-              </span>
+            <div className="flex items-center gap-5">
+              <PracticeLogo practice="bowral" tone="light" width={168} />
+              <span aria-hidden="true" className="h-10 w-px shrink-0 bg-white/15" />
+              <PracticeLogo practice="drummoyne" tone="light" width={150} />
+            </div>
+
+            <p className="mt-6 max-w-xs text-[0.875rem] leading-relaxed text-ink-400">
+              Providing expert cardiac care to our communities in Drummoyne and the Southern
+              Highlands, with compassion, clarity and respect.
             </p>
           </div>
 
           {/* Quick links */}
           {footerNav.map((group) => (
-            <nav key={group.title} aria-label={group.title} className="lg:col-span-2">
-              <h2 className="font-sans text-[0.75rem] font-semibold tracking-[0.16em] text-white uppercase">
+            <nav key={group.title} aria-label={group.title} className="lg:col-span-2 lg:col-start-6">
+              <h2 className="font-sans text-[0.8125rem] font-semibold tracking-[0.02em] text-white">
                 {group.title}
               </h2>
-              <ul className="mt-5 space-y-2.5">
+              <ul className="mt-4 space-y-2">
                 {group.items.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="rounded-sm text-[0.9375rem] text-ink-400 underline-offset-4 transition-colors hover:text-white hover:underline"
+                      className="rounded-sm text-[0.875rem] text-ink-400 underline-offset-4 transition-colors hover:text-white hover:underline"
                     >
                       {item.label}
                     </Link>
@@ -52,77 +47,53 @@ export function Footer() {
             </nav>
           ))}
 
-          {/* Services */}
-          <nav aria-label="Services" className="lg:col-span-3">
-            <h2 className="font-sans text-[0.75rem] font-semibold tracking-[0.16em] text-white uppercase">
-              Services
-            </h2>
-            <ul className="mt-5 space-y-2.5">
-              {footerServices.map((service) => (
-                <li key={service.slug}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="rounded-sm text-[0.9375rem] text-ink-400 underline-offset-4 transition-colors hover:text-white hover:underline"
-                  >
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="/services"
-                  className="rounded-sm text-[0.9375rem] font-medium text-crimson-400 underline-offset-4 transition-colors hover:text-crimson-300 hover:underline"
-                >
-                  All services
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
           {/* Locations */}
-          <div className="md:col-span-2 lg:col-span-3">
-            <h2 className="font-sans text-[0.75rem] font-semibold tracking-[0.16em] text-white uppercase">
+          <div className="lg:col-span-3">
+            <h2 className="font-sans text-[0.8125rem] font-semibold tracking-[0.02em] text-white">
               Our Locations
             </h2>
-            <ul className="mt-5 space-y-6">
+            <ul className="mt-4 space-y-4">
               {locations.map((location) => (
                 <li key={location.slug}>
-                  <PracticeMark location={location} tone="light" size="sm" />
-                  <address className="mt-2.5 pl-8 text-[0.9375rem] leading-relaxed text-ink-400 not-italic">
-                    {location.addressLines.join(', ')}
-                  </address>
-                  <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-0.5 pl-8">
-                    {location.phones.map((phone) => (
-                      <a
-                        key={phone}
-                        href={telHref(phone)}
-                        className="rounded-sm text-[0.9375rem] text-white underline-offset-4 transition-colors hover:text-crimson-300 hover:underline"
-                      >
-                        {phone}
-                      </a>
-                    ))}
-                  </div>
-                  <a
-                    href={`mailto:${location.email}`}
-                    className="mt-1 inline-block rounded-sm pl-8 text-sm break-all text-ink-400 underline-offset-4 transition-colors hover:text-white hover:underline"
-                  >
-                    {location.email}
-                  </a>
+                  <p className="flex items-start gap-2.5 text-[0.875rem] text-ink-300">
+                    <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-crimson-500" />
+                    <span>
+                      {location.shortName} — {location.name.replace(`${location.shortName} `, '')}
+                    </span>
+                  </p>
+                  <p className="mt-1.5 flex items-center gap-2.5">
+                    <Icon name="phone" size={16} className="shrink-0 text-crimson-500" />
+                    <a
+                      href={telHref(location.phones[0]!)}
+                      className="rounded-sm text-[0.875rem] text-ink-400 underline-offset-4 transition-colors hover:text-white hover:underline"
+                    >
+                      {location.phones[0]}
+                    </a>
+                  </p>
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Brand phrase */}
+          <div className="md:col-span-2 lg:col-span-2 lg:flex lg:justify-end">
+            <ScriptMark
+              lines={['People', 'Care', 'Hearts']}
+              tone="light"
+              className="mb-2 text-[2rem] lg:mb-0 lg:text-[2.25rem]"
+            />
           </div>
         </div>
       </Container>
 
       <div className="border-t border-white/8">
         <Container size="wide">
-          <div className="flex flex-col gap-4 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 py-5 text-[0.8125rem] sm:flex-row sm:items-center sm:justify-between">
             <p className="text-ink-500">
-              © {year} {site.legalName}. All rights reserved.
+              © {year} {site.name}. All rights reserved.
             </p>
             <nav aria-label="Legal">
-              <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 <li>
                   <Link
                     href="/privacy-policy"

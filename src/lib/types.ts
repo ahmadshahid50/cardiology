@@ -128,6 +128,9 @@ export interface PatientResource {
 
 export type IconName =
   | 'stethoscope'
+  | 'consultation'
+  | 'heart'
+  | 'heart-pulse'
   | 'ecg'
   | 'treadmill'
   | 'ultrasound'

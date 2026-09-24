@@ -45,7 +45,10 @@ export function Reveal({ children, className, delay = 0, as: Tag = 'div' }: Reve
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) {
+          /* A fast scroll or an anchor jump can carry an element past the
+             viewport between two observations, so anything already above the
+             fold is revealed too — content must never be left hidden. */
+          if (entry.isIntersecting || entry.boundingClientRect.bottom < 0) {
             reveal();
             observer.disconnect();
           }

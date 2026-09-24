@@ -125,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* Locations */}
-      <section className="bg-ink-50 py-16 sm:py-20 lg:py-24" aria-labelledby="about-locations-heading">
+      <section className="bg-frost-50 py-16 sm:py-20 lg:py-24" aria-labelledby="about-locations-heading">
         <Container size="wide">
           <Reveal>
             <SectionHeading

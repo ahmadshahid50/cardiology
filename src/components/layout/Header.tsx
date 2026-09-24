@@ -6,10 +6,30 @@ import { useEffect, useRef, useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
-import { Logo } from '@/components/ui/Logo';
-import { PracticeMark } from '@/components/ui/PracticeMark';
+import { PracticeLogo } from '@/components/ui/PracticeLogo';
 import { cn } from '@/lib/cn';
-import { locations, openingHours, primaryNav, telHref } from '@/data/site';
+import { getLocation, openingHours, primaryNav, telHref } from '@/data/site';
+
+/* The practice bar reads Bowral first, then Drummoyne, matching the approved
+   design: each half carries the tint of that practice's own mark. */
+const practiceBar = [
+  {
+    practice: 'bowral' as const,
+    location: getLocation('bowral'),
+    surface: 'bg-sage-50',
+    rule: 'border-sage-500',
+    /* The green belongs to the Southern Highlands mark and its half of the
+       bar; the pin and phone icons stay crimson on both sides. */
+    accent: 'text-crimson-500',
+  },
+  {
+    practice: 'drummoyne' as const,
+    location: getLocation('drummoyne'),
+    surface: 'bg-crimson-50',
+    rule: 'border-crimson-500',
+    accent: 'text-crimson-500',
+  },
+];
 
 export function Header() {
   const pathname = usePathname();
@@ -80,35 +100,57 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/*
-        Practice bar. The business trades as two named practices, so both are
-        given equal weight here with their own direct line. It scrolls away to
-        leave a compact nav.
+        Practice bar. The business trades as two named practices, so the bar is
+        split down the middle and each half is tinted with that practice's own
+        colour. It scrolls away to leave a compact nav.
       */}
       <div
         className={cn(
-          'hidden border-b border-ink-100 bg-white transition-[max-height,opacity] duration-300 lg:block',
-          scrolled ? 'max-h-0 overflow-hidden opacity-0' : 'max-h-24 opacity-100'
+          'relative hidden transition-[max-height,opacity] duration-300 lg:block',
+          scrolled ? 'max-h-0 overflow-hidden opacity-0' : 'max-h-28 opacity-100'
         )}
       >
-        <Container size="wide">
-          <ul className="grid grid-cols-2 divide-x divide-ink-100">
-            {locations.map((location, i) => (
-              <li
-                key={location.slug}
-                className={cn('flex items-center justify-between gap-6 py-3', i === 0 ? 'pr-8' : 'pl-8')}
-              >
-                <PracticeMark location={location} />
-                <a
-                  href={telHref(location.phones[0]!)}
-                  className="group inline-flex items-center gap-2 rounded-sm text-[0.9375rem] font-semibold text-ink-800 transition-colors hover:text-crimson-700"
+        <div aria-hidden="true" className="absolute inset-0 grid grid-cols-2">
+          {practiceBar.map((half) => (
+            <div key={half.practice} className={cn('border-b-2', half.surface, half.rule)} />
+          ))}
+        </div>
+
+        <Container size="wide" className="relative">
+          <ul className="grid grid-cols-2">
+            {practiceBar.map((half, i) => {
+              const { location } = half;
+              return (
+                <li
+                  key={half.practice}
+                  className={cn('flex items-center gap-5 py-3.5', i === 0 ? 'pr-8' : 'pl-8')}
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-crimson-50 text-crimson-600 transition-colors group-hover:bg-crimson-600 group-hover:text-white">
-                    <Icon name="phone" size={14} />
+                  <PracticeLogo practice={half.practice} width={i === 0 ? 190 : 172} priority />
+
+                  {/* Below xl the two halves are too narrow to carry the room
+                      label as well, so the logo and the direct line stand in. */}
+                  <span className="hidden items-center gap-2.5 border-l border-ink-200/80 pl-5 xl:flex">
+                    <Icon name="pin" size={16} className={cn('shrink-0', half.accent)} />
+                    <span className="leading-tight">
+                      <span className="block text-[0.8125rem] font-semibold whitespace-nowrap text-ink-900">
+                        {location.shortName}
+                      </span>
+                      <span className="block text-[0.6875rem] whitespace-nowrap text-ink-500">
+                        {location.name.replace(`${location.shortName} `, '')}
+                      </span>
+                    </span>
                   </span>
-                  {location.phones[0]}
-                </a>
-              </li>
-            ))}
+
+                  <a
+                    href={telHref(location.phones[0]!)}
+                    className="ml-auto flex shrink-0 items-center gap-2.5 rounded-sm border-l border-ink-200/80 pl-5 text-[0.875rem] font-semibold whitespace-nowrap text-ink-900 transition-colors hover:text-crimson-600"
+                  >
+                    <Icon name="phone" size={16} className={cn('shrink-0', half.accent)} />
+                    {location.phones[0]}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </div>
@@ -118,20 +160,33 @@ export function Header() {
       <div
         className={cn(
           'relative z-50 border-b bg-white/95 backdrop-blur-md transition-shadow duration-300',
-          scrolled ? 'border-ink-200 shadow-subtle' : 'border-ink-100'
+          scrolled ? 'border-ink-100 shadow-subtle' : 'border-transparent'
         )}
       >
         <Container size="wide">
-          <div
-            className={cn(
-              'flex items-center justify-between gap-6 transition-[height] duration-300',
-              scrolled ? 'h-17.5' : 'h-19 lg:h-21'
-            )}
-          >
-            <Logo width={scrolled ? 164 : 180} priority className="transition-[width] duration-300" />
+          <div className="relative flex h-17 items-center gap-4 lg:h-18">
+            {/* Once the practice bar has scrolled away the nav would carry no
+                branding at all, so the Drummoyne mark slides in to hold its
+                place. Until then it takes no width, leaving the nav the room
+                it needs on a laptop screen. */}
+            <div
+              className={cn(
+                'shrink-0 overflow-hidden transition-[width,opacity] duration-300',
+                scrolled
+                  ? 'lg:w-38 lg:opacity-100'
+                  : 'lg:pointer-events-none lg:w-0 lg:opacity-0'
+              )}
+            >
+              <PracticeLogo practice="drummoyne" width={152} priority />
+            </div>
 
-            <nav aria-label="Primary" className="hidden lg:block">
-              <ul className="flex items-center gap-0.5">
+            {/* Centred by flex up to xl, then pinned to the exact centre of the
+                bar once there is room for it on either side. */}
+            <nav
+              aria-label="Primary"
+              className="hidden flex-1 justify-center lg:flex xl:absolute xl:left-1/2 xl:flex-none xl:-translate-x-1/2"
+            >
+              <ul className="flex items-center gap-0.5 xl:gap-1">
                 {primaryNav.map((item) => {
                   const active = isActive(item.href);
                   return (
@@ -140,11 +195,13 @@ export function Header() {
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
                         className={cn(
-                          'relative rounded-md px-3 py-2 text-[0.9375rem] font-medium transition-colors',
-                          'after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:origin-left',
-                          'after:scale-x-0 after:bg-crimson-600 after:transition-transform after:duration-300',
-                          'hover:after:scale-x-100',
-                          active ? 'text-crimson-700 after:scale-x-100' : 'text-ink-700 hover:text-ink-900'
+                          'relative block rounded-sm px-2.5 py-2 text-[0.9375rem] whitespace-nowrap transition-colors xl:px-3.5',
+                          'after:absolute after:inset-x-2.5 after:bottom-0 after:h-0.5 after:origin-left xl:after:inset-x-3.5',
+                          'after:scale-x-0 after:rounded-full after:bg-crimson-500',
+                          'after:transition-transform after:duration-300 hover:after:scale-x-100',
+                          active
+                            ? 'font-semibold text-crimson-600 after:scale-x-100'
+                            : 'font-medium text-ink-700 hover:text-ink-900'
                         )}
                       >
                         {item.label}
@@ -157,7 +214,7 @@ export function Header() {
 
             {/* Wrapped rather than given `hidden` directly: Button already sets
                 `inline-flex`, which would win over `hidden` on source order. */}
-            <div className="hidden lg:block">
+            <div className="ml-auto hidden shrink-0 lg:block">
               <Button href="/make-an-appointment">
                 <Icon name="calendar" size={17} />
                 Book an Appointment
@@ -165,11 +222,11 @@ export function Header() {
             </div>
 
             {/* Mobile controls */}
-            <div className="flex items-center gap-2 lg:hidden">
+            <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
               <a
-                href={telHref(locations[0]!.phones[0]!)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-ink-200 text-ink-700 transition-colors hover:border-ink-300 hover:bg-ink-50"
-                aria-label={`Call ${locations[0]!.shortName} on ${locations[0]!.phones[0]}`}
+                href={telHref(practiceBar[1]!.location.phones[0]!)}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink-200 text-crimson-500 transition-colors hover:border-crimson-200 hover:bg-crimson-50"
+                aria-label={`Call ${practiceBar[1]!.location.shortName} on ${practiceBar[1]!.location.phones[0]}`}
               >
                 <Icon name="phone" size={19} />
               </a>
@@ -179,7 +236,7 @@ export function Header() {
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-ink-200 text-ink-800 transition-colors hover:border-ink-300 hover:bg-ink-50"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink-200 text-ink-800 transition-colors hover:border-ink-300 hover:bg-ink-50"
               >
                 <Icon name={menuOpen ? 'close' : 'menu'} size={20} />
                 <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
@@ -225,14 +282,14 @@ export function Header() {
                         aria-current={active ? 'page' : undefined}
                         className={cn(
                           'flex items-center justify-between py-4 text-lg font-medium transition-colors',
-                          active ? 'text-crimson-700' : 'text-ink-800'
+                          active ? 'text-crimson-600' : 'text-ink-800'
                         )}
                       >
                         {item.label}
                         <Icon
                           name="arrow-right"
                           size={18}
-                          className={active ? 'text-crimson-600' : 'text-ink-300'}
+                          className={active ? 'text-crimson-500' : 'text-ink-300'}
                         />
                       </Link>
                     </li>
@@ -246,18 +303,18 @@ export function Header() {
               Book an Appointment
             </Button>
 
-            <ul className="mt-8 space-y-5">
-              {locations.map((location) => (
-                <li key={location.slug}>
-                  <PracticeMark location={location} size="sm" />
-                  <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1.5 pl-8">
-                    {location.phones.map((phone) => (
+            <ul className="mt-8 space-y-6">
+              {practiceBar.map((half) => (
+                <li key={half.practice} className={cn('rounded-xl p-4', half.surface)}>
+                  <PracticeLogo practice={half.practice} width={164} asLink={false} />
+                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+                    {half.location.phones.map((phone) => (
                       <a
                         key={phone}
                         href={telHref(phone)}
-                        className="flex items-center gap-2 text-[0.9375rem] text-ink-800 underline-offset-4 hover:underline"
+                        className="flex items-center gap-2 text-[0.9375rem] font-medium text-ink-800 underline-offset-4 hover:underline"
                       >
-                        <Icon name="phone" size={15} className="text-crimson-600" />
+                        <Icon name="phone" size={15} className={half.accent} />
                         {phone}
                       </a>
                     ))}
@@ -267,7 +324,7 @@ export function Header() {
             </ul>
 
             <p className="mt-6 flex items-center gap-2 border-t border-ink-100 pt-5 text-sm text-ink-600">
-              <Icon name="clock" size={15} className="text-crimson-600" />
+              <Icon name="clock" size={15} className="text-crimson-500" />
               {openingHours.days}, {openingHours.hours}
             </p>
           </Container>

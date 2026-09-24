@@ -5,26 +5,29 @@ import { cn } from '@/lib/cn';
 type Variant = 'primary' | 'secondary' | 'ghost' | 'onDark';
 type Size = 'sm' | 'md' | 'lg';
 
+/* Buttons are pill shaped throughout the site — it is the single most
+   recognisable shape in the practice's design, and it is what separates a
+   primary action from the square-cornered cards it usually sits inside. */
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-md font-sans font-semibold ' +
+  'inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold ' +
   'transition-[background-color,color,border-color,box-shadow,transform] duration-200 ' +
   'ease-out-soft active:translate-y-px ' +
   'disabled:pointer-events-none disabled:opacity-55';
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-crimson-600 text-white shadow-subtle hover:bg-crimson-700 hover:shadow-card focus-visible:outline-crimson-700',
+    'bg-crimson-500 text-white shadow-subtle hover:bg-crimson-600 hover:shadow-card focus-visible:outline-crimson-700',
   secondary:
-    'border border-ink-200 bg-white text-ink-800 shadow-subtle hover:border-ink-300 hover:bg-ink-50 hover:text-ink-900',
+    'border border-ink-200 bg-white text-ink-800 shadow-subtle hover:border-crimson-200 hover:bg-white hover:text-crimson-700',
   ghost: 'text-ink-700 hover:bg-ink-50 hover:text-ink-900',
   onDark:
     'border border-white/25 bg-white/5 text-white backdrop-blur-sm hover:border-white/50 hover:bg-white/12 focus-visible:outline-white',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'h-9 px-3.5 text-sm',
+  sm: 'h-10 px-4 text-sm',
   md: 'h-11 px-5 text-[0.9375rem]',
-  lg: 'h-13 px-6 text-base',
+  lg: 'h-12.5 px-6 text-[0.9375rem]',
 };
 
 interface CommonProps {

@@ -66,7 +66,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
   return (
     <>
       {/* Profile header */}
-      <div className="border-b border-ink-100 bg-ink-50">
+      <div className="border-b border-ink-100 bg-frost-50">
         <Container size="wide" className="py-10 lg:py-14">
           <Breadcrumbs items={crumbs} />
 
@@ -87,7 +87,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
             </div>
 
             <div className="lg:col-span-8 xl:col-span-9">
-              <p className="rule-crimson text-[0.8125rem] font-semibold tracking-[0.14em] text-crimson-600 uppercase">
+              <p className="rule-crimson text-[0.8125rem] font-semibold tracking-[0.2em] text-crimson-500 uppercase">
                 {doctor.title}
               </p>
               <h1 className="mt-5 text-4xl sm:text-5xl">{doctor.name}</h1>
@@ -102,7 +102,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                       name="check"
                       size={15}
                       strokeWidth={2.25}
-                      className="mt-1.5 shrink-0 text-crimson-600"
+                      className="mt-1.5 shrink-0 text-crimson-500"
                     />
                     {appointment}
                   </li>
@@ -144,7 +144,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                 <ul className="mt-5 space-y-3">
                   {doctor.areasOfPractice.map((area) => (
                     <li key={area} className="flex items-start gap-3 text-[0.9375rem] text-ink-700">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-crimson-50 text-crimson-600">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-crimson-50 text-crimson-500">
                         <Icon name="check" size={12} strokeWidth={2.5} />
                       </span>
                       {area}
@@ -153,7 +153,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                 </ul>
               </div>
 
-              <div className="mt-6 rounded-lg border border-ink-100 bg-ink-50 p-6 sm:p-7">
+              <div className="mt-6 rounded-lg border border-ink-100 bg-frost-50 p-6 sm:p-7">
                 <h2 className="font-serif text-lg font-semibold text-ink-900">
                   Arrange an appointment
                 </h2>
@@ -167,7 +167,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                         href={telHref(location.phones[0]!)}
                         className="mt-1 inline-flex items-center gap-2 rounded-sm font-medium text-ink-900 underline-offset-4 hover:text-crimson-700 hover:underline"
                       >
-                        <Icon name="phone" size={16} className="text-crimson-600" />
+                        <Icon name="phone" size={16} className="text-crimson-500" />
                         {location.phones[0]}
                       </a>
                     </li>
@@ -181,7 +181,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
 
       {/* Other cardiologists */}
       {others.length > 0 && (
-        <section className="bg-ink-50 py-16 sm:py-20" aria-labelledby="other-cardiologists-heading">
+        <section className="bg-frost-50 py-16 sm:py-20" aria-labelledby="other-cardiologists-heading">
           <Container size="wide">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 id="other-cardiologists-heading" className="text-2xl sm:text-3xl">

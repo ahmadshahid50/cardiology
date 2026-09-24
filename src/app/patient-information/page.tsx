@@ -98,7 +98,7 @@ export default function PatientInformationPage() {
                         return (
                           <div
                             key={sub.heading}
-                            className="mt-7 rounded-lg border border-ink-100 bg-ink-50 p-6 sm:p-7"
+                            className="mt-7 rounded-lg border border-ink-100 bg-frost-50 p-6 sm:p-7"
                           >
                             <h3 className="font-serif text-lg font-semibold text-ink-900">
                               {sub.heading}
@@ -182,7 +182,7 @@ export default function PatientInformationPage() {
                   className="rounded-lg border border-ink-200 bg-white p-6 sm:p-7"
                 >
                   <h2 className="flex items-center gap-2.5 font-serif text-lg font-semibold text-ink-900">
-                    <Icon name="shield" size={20} className="text-crimson-600" />
+                    <Icon name="shield" size={20} className="text-crimson-500" />
                     Please note
                   </h2>
                   <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-600">

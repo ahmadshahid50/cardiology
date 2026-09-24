@@ -28,11 +28,26 @@
   --color-crimson-200: #f5c9cc;
   --color-crimson-300: #eb9ba1;
   --color-crimson-400: #dd6570;
-  --color-crimson-500: #cb3441;
+  --color-crimson-500: #d8232f;
   --color-crimson-600: #ba131d;
   --color-crimson-700: #9c0f18;
   --color-crimson-800: #7f1018;
   --color-crimson-900: #6b1219;
+
+  /* -- Sage: the Southern Highlands Heart Centre mark is set in green, so the
+        Bowral side of the practice bar and its lockup carry a green accent --- */
+  --color-sage-50: #f2f8f0;
+  --color-sage-100: #e2f0dd;
+  --color-sage-200: #c7e3bf;
+  --color-sage-400: #85bb63;
+  --color-sage-500: #6faa4b;
+  --color-sage-600: #4f8f35;
+  --color-sage-700: #3d7527;
+
+  /* -- Frost: the pale blue field the page sections sit on ----------------- */
+  --color-frost-50: #f1f7fb;
+  --color-frost-100: #e4eff8;
+  --color-frost-200: #cfe0ee;
 
   /* -- Surfaces ------------------------------------------------------------ */
   --color-paper: #ffffff;
@@ -42,6 +57,8 @@
   /* -- Typography ---------------------------------------------------------- */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif: var(--font-source-serif), ui-serif, Georgia, 'Times New Roman', serif;
+  /* Handwritten accent, used only for the two brand phrases. */
+  --font-script: var(--font-caveat), ui-rounded, 'Segoe Script', cursive;
 
   --text-display: 3.25rem;
   --text-display--line-height: 1.08;
@@ -172,7 +189,8 @@
     width: 2.25rem;
     height: 2px;
     margin-top: 0.75rem;
-    background-color: var(--color-crimson-600);
+    border-radius: 1px;
+    background-color: var(--color-crimson-500);
   }
 }
 

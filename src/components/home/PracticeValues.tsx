@@ -15,7 +15,7 @@ export function PracticeValues() {
           {practiceValues.map((value, i) => (
             <li key={value.title}>
               <Reveal delay={i * 70}>
-                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-crimson-50 text-crimson-600">
+                <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-crimson-50 text-crimson-500">
                   <Icon name={value.icon} size={22} />
                 </span>
                 <h3 className="mt-5 font-serif text-lg font-semibold text-ink-900">{value.title}</h3>

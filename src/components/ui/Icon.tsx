@@ -19,6 +19,24 @@ export type UiIconName =
   | 'external';
 
 const paths: Record<UiIconName, React.ReactNode> = {
+  consultation: (
+    <>
+      <rect x="2.75" y="3.25" width="18.5" height="17.5" rx="4" />
+      <circle cx="12" cy="10" r="2.5" />
+      <path d="M7.5 17.6a4.8 4.8 0 0 1 9 0" />
+    </>
+  ),
+  heart: (
+    <>
+      <path d="M12 20.8S3.6 15.4 3.6 9.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8.4 2.7c0 5.7-8.4 11.1-8.4 11.1Z" />
+    </>
+  ),
+  'heart-pulse': (
+    <>
+      <path d="M12 20.8S3.6 15.4 3.6 9.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8.4 2.7c0 5.7-8.4 11.1-8.4 11.1Z" />
+      <path d="M4.4 12.4h3.3l1.4-2.9 2.2 5.9 1.6-3.6.9 .6h5.8" />
+    </>
+  ),
   stethoscope: (
     <>
       <path d="M5 3v5a4 4 0 0 0 8 0V3" />

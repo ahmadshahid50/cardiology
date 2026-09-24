@@ -31,10 +31,10 @@ export function SectionHeading({
       {eyebrow && (
         <p
           className={cn(
-            'text-[0.8125rem] font-semibold tracking-[0.14em] uppercase',
+            'text-[0.75rem] font-semibold tracking-[0.2em] uppercase',
             centered && 'flex flex-col items-center',
             'rule-crimson',
-            tone === 'dark' ? 'text-crimson-300' : 'text-crimson-600'
+            tone === 'dark' ? 'text-crimson-300' : 'text-crimson-500'
           )}
         >
           {eyebrow}
@@ -43,7 +43,7 @@ export function SectionHeading({
       <Tag
         id={id}
         className={cn(
-          'mt-5 text-3xl sm:text-4xl',
+          'mt-5 text-[1.75rem] font-bold sm:text-[2.125rem]',
           Tag === 'h1' && 'sm:text-display',
           tone === 'dark' && 'text-white'
         )}

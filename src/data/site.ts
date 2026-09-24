@@ -24,10 +24,10 @@ export const site = {
 /**
  * Three-word summary of the practice's stated approach, used as a quiet strip
  * beneath the hero. Each word is drawn from the practice's own description of
- * its care — expertise across cardiology, compassion and warmth, and continuity
- * through hospital affiliations and ongoing review.
+ * its care — expertise across cardiology, compassion and warmth, and the two
+ * communities the rooms serve.
  */
-export const heroValues = ['Expertise', 'Compassion', 'Continuity of care'] as const;
+export const heroValues = ['Expertise', 'Compassion', 'Community'] as const;
 
 export const openingHours: OpeningHours = {
   label: 'Working hours',
@@ -78,6 +78,13 @@ export const locations: Location[] = [
     geo: { latitude: -34.483378, longitude: 150.413206 },
   },
 ];
+
+/** Looks up a location by slug. Throws at build time if the slug is wrong. */
+export function getLocation(slug: 'drummoyne' | 'bowral'): Location {
+  const location = locations.find((item) => item.slug === slug);
+  if (!location) throw new Error(`Unknown location: ${slug}`);
+  return location;
+}
 
 /** Strips formatting so a phone number can be used in a `tel:` href. */
 export function telHref(phone: string): string {

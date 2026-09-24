@@ -1,78 +1,40 @@
-import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
-import { locations, telHref } from '@/data/site';
 
 interface CallToActionProps {
   title?: string;
   description?: string;
 }
 
+/**
+ * Closing band shared by every page: one heading, one line of reassurance and
+ * the single action the practice wants a patient to take.
+ */
 export function CallToAction({
-  title = 'Your heart deserves expert care',
-  description = 'Call the rooms closest to you, or send an enquiry and our team will be in touch.',
+  title = 'Ready to arrange your appointment?',
+  description = 'Our friendly team is here to help you with booking and any questions.',
 }: CallToActionProps) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink-900" aria-labelledby="cta-heading">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/hero/heart-rhythm-diagnostics-hero.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center opacity-25"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-ink-950/80" />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(186,19,29,0.32),transparent_62%)]"
-        />
-      </div>
+    <section className="border-y border-frost-200 bg-frost-100" aria-labelledby="cta-heading">
+      <Container size="wide" className="py-8 sm:py-9">
+        <Reveal className="flex flex-col items-center gap-5 text-center lg:flex-row lg:gap-8 lg:text-left">
+          <Icon name="heart-pulse" size={40} strokeWidth={1.4} className="shrink-0 text-crimson-500" />
 
-      <Container size="wide" className="py-20 sm:py-24 lg:py-28">
-        <Reveal className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
-            <h2
-              id="cta-heading"
-              className="text-3xl leading-[1.1] text-white sm:text-4xl lg:text-[3rem]"
-            >
+          <span aria-hidden="true" className="hidden h-14 w-px shrink-0 bg-ink-200 lg:block" />
+
+          <div className="flex-1">
+            <h2 id="cta-heading" className="text-[1.375rem] leading-tight font-bold text-ink-900">
               {title}
             </h2>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-200">{description}</p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href="/make-an-appointment" size="lg">
-                <Icon name="calendar" size={18} />
-                Book an Appointment
-              </Button>
-              <Button href="/contact" size="lg" variant="onDark">
-                Contact Us
-                <Icon name="arrow-right" size={18} />
-              </Button>
-            </div>
+            <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-500">{description}</p>
           </div>
 
-          <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
-            {locations.map((location) => (
-              <li
-                key={location.slug}
-                className="rounded-xl border border-white/12 bg-white/5 p-6 backdrop-blur-sm"
-              >
-                <p className="text-[0.75rem] font-semibold tracking-[0.14em] text-ink-400 uppercase">
-                  {location.shortName}
-                </p>
-                <a
-                  href={telHref(location.phones[0]!)}
-                  className="mt-2.5 inline-flex items-center gap-2.5 rounded-sm font-serif text-2xl font-semibold text-white transition-colors hover:text-crimson-300"
-                >
-                  <Icon name="phone" size={19} className="text-crimson-400" />
-                  {location.phones[0]}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <Button href="/make-an-appointment" size="lg" className="shrink-0">
+            <Icon name="calendar" size={18} />
+            Book an Appointment
+          </Button>
         </Reveal>
       </Container>
     </section>

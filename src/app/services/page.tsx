@@ -38,12 +38,15 @@ export default function ServicesPage() {
         if (groupServices.length === 0) return null;
 
         const alt = groupIndex % 2 === 1;
+        /* Mixing photo-led and icon-led cards in one row leaves a ragged grid,
+           so a group only leads with photographs when every service has one. */
+        const variant = groupServices.every((service) => service.image) ? 'feature' : 'compact';
 
         return (
           <section
             key={group.category}
             aria-labelledby={`${group.category}-heading`}
-            className={alt ? 'bg-ink-50 py-16 sm:py-20' : 'py-16 sm:py-20'}
+            className={alt ? 'bg-frost-50 py-16 sm:py-20' : 'py-16 sm:py-20'}
           >
             <Container size="wide">
               <Reveal>
@@ -61,7 +64,7 @@ export default function ServicesPage() {
                     <Reveal delay={i * 70} className="flex w-full">
                       <ServiceCard
                         service={service}
-                        variant={service.image ? 'feature' : 'compact'}
+                        variant={variant}
                         className="w-full"
                       />
                     </Reveal>
@@ -77,7 +80,7 @@ export default function ServicesPage() {
           description for these, so only the names are published. */}
       <section className="pb-16 sm:pb-20" aria-labelledby="additional-heading">
         <Container size="wide">
-          <Reveal className="rounded-lg border border-ink-200 bg-ink-50 p-7 sm:p-9">
+          <Reveal className="rounded-lg border border-ink-200 bg-frost-50 p-7 sm:p-9">
             <h2 id="additional-heading" className="font-serif text-2xl font-semibold text-ink-900">
               Additional monitoring options
             </h2>
@@ -92,7 +95,7 @@ export default function ServicesPage() {
                   key={item.name}
                   className="inline-flex items-center gap-2.5 rounded-md border border-ink-200 bg-white px-4 py-2.5 text-[0.9375rem] font-medium text-ink-800"
                 >
-                  <Icon name="heart-monitor" size={18} className="text-crimson-600" />
+                  <Icon name="heart-monitor" size={18} className="text-crimson-500" />
                   {item.name}
                 </li>
               ))}

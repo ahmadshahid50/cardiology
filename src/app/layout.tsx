@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Source_Serif_4 } from 'next/font/google';
+import { Caveat, Inter, Source_Serif_4 } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -18,6 +18,15 @@ const sourceSerif = Source_Serif_4({
   display: 'swap',
   variable: '--font-source-serif',
   weight: ['400', '600', '700'],
+});
+
+/* Handwritten accent used only for the two brand phrases ("Healthier Hearts,
+   Brighter Tomorrows" in the hero and "People, Care, Hearts" in the footer). */
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-caveat',
+  weight: ['500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +61,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${inter.variable} ${sourceSerif.variable}`}>
+    <html lang="en-AU" className={`${inter.variable} ${sourceSerif.variable} ${caveat.variable}`}>
       <body className="flex min-h-dvh flex-col bg-white antialiased">
         <a
           href="#main"

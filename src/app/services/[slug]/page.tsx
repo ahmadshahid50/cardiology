@@ -63,13 +63,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <div className="border-b border-ink-100 bg-ink-50">
+      <div className="border-b border-ink-100 bg-frost-50">
         <Container size="wide" className="py-10 lg:py-14">
           <Breadcrumbs items={crumbs} />
 
           <div className="mt-8 grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
-              <p className="rule-crimson text-[0.8125rem] font-semibold tracking-[0.14em] text-crimson-600 uppercase">
+              <p className="rule-crimson text-[0.8125rem] font-semibold tracking-[0.2em] text-crimson-500 uppercase">
                 {group?.title ?? 'Our services'}
               </p>
               <h1 className="mt-5 text-4xl sm:text-5xl">{service.name}</h1>
@@ -102,7 +102,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               ) : (
                 <div className="flex aspect-3/2 items-center justify-center rounded-lg border border-ink-200 bg-white">
-                  <Icon name={service.icon} size={92} className="text-crimson-600/25" strokeWidth={1} />
+                  <Icon name={service.icon} size={92} className="text-crimson-500/25" strokeWidth={1} />
                 </div>
               )}
             </div>
@@ -121,7 +121,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 {service.description}
               </p>
 
-              <div className="mt-10 rounded-lg border border-ink-100 bg-ink-50 p-6 sm:p-7">
+              <div className="mt-10 rounded-lg border border-ink-100 bg-frost-50 p-6 sm:p-7">
                 <h3 className="font-serif text-lg font-semibold text-ink-900">
                   Preparing for your appointment
                 </h3>
@@ -169,7 +169,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   ))}
                 </ul>
                 <p className="mt-5 flex items-start gap-2.5 border-t border-ink-100 pt-5 text-sm text-ink-600">
-                  <Icon name="clock" size={16} className="mt-0.5 shrink-0 text-crimson-600" />
+                  <Icon name="clock" size={16} className="mt-0.5 shrink-0 text-crimson-500" />
                   <span>
                     {openingHours.days}
                     <span className="mt-0.5 block font-medium text-ink-900">
@@ -184,7 +184,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       </section>
 
       {related.length > 0 && (
-        <section className="bg-ink-50 py-16 sm:py-20" aria-labelledby="related-services-heading">
+        <section className="bg-frost-50 py-16 sm:py-20" aria-labelledby="related-services-heading">
           <Container size="wide">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2 id="related-services-heading" className="text-2xl sm:text-3xl">
@@ -206,7 +206,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     href={`/services/${item.slug}`}
                     className="group flex h-full items-start gap-4 rounded-lg border border-ink-100 bg-white p-5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-ink-200 hover:shadow-card"
                   >
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-crimson-50 text-crimson-600">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-crimson-50 text-crimson-500">
                       <Icon name={item.icon} size={20} />
                     </span>
                     <span className="min-w-0">

@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/home/Hero';
-import { PracticeValues } from '@/components/home/PracticeValues';
-import { Introduction } from '@/components/home/Introduction';
 import { Services } from '@/components/home/Services';
 import { Cardiologists } from '@/components/home/Cardiologists';
 import { Locations } from '@/components/home/Locations';
-import { PatientInfo } from '@/components/home/PatientInfo';
 import { CallToAction } from '@/components/home/CallToAction';
 import { pageMetadata } from '@/lib/seo';
 
@@ -25,12 +22,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PracticeValues />
-      <Introduction />
       <Services />
       <Cardiologists />
       <Locations />
-      <PatientInfo />
       <CallToAction />
     </>
   );

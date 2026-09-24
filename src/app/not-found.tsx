@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <Container size="wide" className="py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-sans text-[0.8125rem] font-semibold tracking-[0.14em] text-crimson-600 uppercase">
+        <p className="font-sans text-[0.8125rem] font-semibold tracking-[0.2em] text-crimson-500 uppercase">
           Error 404
         </p>
         <h1 className="mt-4 text-4xl sm:text-5xl">We couldn&rsquo;t find that page</h1>
@@ -59,7 +59,7 @@ export default function NotFound() {
               href={telHref(location.phones[0]!)}
               className="inline-flex items-center gap-2 rounded-sm text-[0.9375rem] font-medium text-ink-800 underline-offset-4 hover:text-crimson-700 hover:underline"
             >
-              <Icon name="phone" size={16} className="text-crimson-600" />
+              <Icon name="phone" size={16} className="text-crimson-500" />
               {location.shortName} {location.phones[0]}
             </a>
           ))}

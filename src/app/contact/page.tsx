@@ -33,7 +33,7 @@ export default function ContactPage() {
       />
 
       {/* Quick contact strip */}
-      <section className="border-b border-ink-100 bg-ink-50" aria-label="Contact details at a glance">
+      <section className="border-b border-ink-100 bg-frost-50" aria-label="Contact details at a glance">
         <Container size="wide">
           <ul className="grid gap-px overflow-hidden sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((location) => (
@@ -48,7 +48,7 @@ export default function ContactPage() {
                       href={telHref(phone)}
                       className="flex items-center gap-2.5 rounded-sm font-serif text-xl font-semibold text-ink-900 underline-offset-4 transition-colors hover:text-crimson-700 hover:underline"
                     >
-                      <Icon name="phone" size={18} className="text-crimson-600" />
+                      <Icon name="phone" size={18} className="text-crimson-500" />
                       {phone}
                     </a>
                   ))}
@@ -57,7 +57,7 @@ export default function ContactPage() {
                   href={`mailto:${location.email}`}
                   className="mt-2 inline-flex items-center gap-2.5 rounded-sm text-[0.9375rem] break-all text-ink-600 underline-offset-4 hover:text-crimson-700 hover:underline"
                 >
-                  <Icon name="mail" size={17} className="shrink-0 text-crimson-600" />
+                  <Icon name="mail" size={17} className="shrink-0 text-crimson-500" />
                   {location.email}
                 </a>
               </li>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 Opening hours
               </p>
               <p className="mt-2.5 flex items-center gap-2.5 font-serif text-xl font-semibold text-ink-900">
-                <Icon name="clock" size={18} className="text-crimson-600" />
+                <Icon name="clock" size={18} className="text-crimson-500" />
                 {openingHours.hours}
               </p>
               <p className="mt-2 text-[0.9375rem] text-ink-600">{openingHours.days}</p>
@@ -118,7 +118,7 @@ export default function ContactPage() {
       </section>
 
       {/* Locations with maps */}
-      <section className="bg-ink-50 py-16 sm:py-20 lg:py-24" aria-labelledby="contact-locations-heading">
+      <section className="bg-frost-50 py-16 sm:py-20 lg:py-24" aria-labelledby="contact-locations-heading">
         <Container size="wide">
           <Reveal>
             <SectionHeading

@@ -51,7 +51,7 @@ export const services: Service[] = [
     description:
       'A cardiac consultation usually includes an interview about your symptoms and history, a physical examination, any further tests that are required, and a discussion of your condition. Depending on what is found, your cardiologist may discuss lifestyle changes, medications, cardiac rehabilitation, or procedures such as angioplasty or coronary artery bypass grafting.',
     category: 'consultation',
-    icon: 'stethoscope',
+    icon: 'consultation',
     image: {
       src: '/images/services/cardiac-consultation.webp',
       alt: 'Clinician in scrubs forming a heart shape with gloved hands',
@@ -95,7 +95,7 @@ export const services: Service[] = [
     description:
       'An echocardiogram is an ultrasound scan of the heart. It is a diagnostic tool that allows the chambers, valves and pumping function of the heart to be assessed. The scan uses ultrasound rather than radiation, and is performed by a sonographer using a probe on the chest.',
     category: 'diagnostic',
-    icon: 'ultrasound',
+    icon: 'heart',
     image: {
       src: '/images/services/echocardiogram-heart-ultrasound.webp',
       alt: 'Sonographer performing an echocardiogram on a patient',
@@ -244,8 +244,8 @@ export function servicesByCategory(category: ServiceCategory): Service[] {
 /** Services surfaced on the homepage grid. */
 export const featuredServiceSlugs = [
   'cardiac-consultation',
-  'echocardiogram',
   'ecg',
+  'echocardiogram',
   'stress-ecg',
   'holter-monitoring',
   'coronary-angiography-and-stenting',
