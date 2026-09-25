@@ -70,9 +70,16 @@ export default function MakeAnAppointmentPage() {
                     </a>
                   ))}
                 </div>
+                <p className="mt-3 flex items-center justify-center gap-2 text-[0.9375rem] text-ink-500">
+                  <Icon name="fax" size={16} className="shrink-0 text-crimson-500" />
+                  <span>
+                    <span aria-hidden="true">Fax</span>
+                    <span className="sr-only">Fax</span> {location.fax}
+                  </span>
+                </p>
                 <a
                   href={`mailto:${location.email}`}
-                  className="mt-3 inline-block rounded-sm text-[0.9375rem] break-all text-ink-600 underline-offset-4 hover:text-crimson-700 hover:underline"
+                  className="mt-2 inline-block rounded-sm text-[0.9375rem] break-all text-ink-600 underline-offset-4 hover:text-crimson-700 hover:underline"
                 >
                   {location.email}
                 </a>

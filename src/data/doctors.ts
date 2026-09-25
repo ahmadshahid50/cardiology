@@ -4,16 +4,18 @@ import type { Doctor } from '@/lib/types';
  * Consultant cardiologists.
  *
  * Names, post-nominals, hospital appointments, university roles and biographies
- * are migrated VERBATIM from the existing website's About Us page. Only
- * punctuation and sentence spacing have been normalised. Do not edit any
- * clinical or credential wording without written confirmation from the practice.
+ * are published VERBATIM as supplied by the practice. Both biographies, and the
+ * subspecialty, expertise, qualification and registration details below them,
+ * are the practice's own replacement copy. Only punctuation and sentence spacing
+ * have been normalised. Do not edit any clinical or credential wording without
+ * written confirmation from the practice.
  */
 
 export const doctors: Doctor[] = [
   {
     slug: 'dr-imran-kassam',
     name: 'Dr Imran Kassam',
-    qualifications: 'MBBS, FRACP, FCSANZ',
+    postNominals: 'MBBS, FRACP, FCSANZ',
     title: 'Consultant Cardiologist and Electrophysiologist',
     appointments: [
       'Conjoint Lecturer, University of New South Wales',
@@ -27,11 +29,15 @@ export const doctors: Doctor[] = [
       'Electrophysiological studies',
       'Ablative therapy',
     ],
+    subspecialties: ['Electrophysiology'],
+    areasOfExpertise: ['Cardiac Pacing', 'ECG (Electrocardiogram)'],
+    qualifications: ['MBBS University of Karachi 1999'],
+    registration: { body: 'AHPRA', number: 'MED0001194229' },
     bio: [
-      'Dr Kassam completed his training in cardiology at St Vincent’s Hospital, Sydney. His study in cardiology incorporated fellowships in heart failure, transplantation, electrophysiology and device therapy.',
-      'During his training he has been involved in multiple clinical trials and has published papers in peer reviewed journals.',
-      'Dr Kassam’s areas of practice include general cardiology and electrophysiology. He has expertise in device implantation (pacemakers, defibrillators), electrophysiological studies and ablative therapy. He is a visiting medical officer at Macquarie University Hospital where he performs his procedural work.',
-      'Dr Kassam is also a Visiting Medical Officer at Griffith Base Hospital where he is involved in teaching medical students and supervising trainees.',
+      'Dr Imran Kassam is a Consultant Cardiologist and Electrophysiologist with specialist expertise in heart rhythm disorders, device therapy, and general cardiology. He is a Conjoint Lecturer at University of New South Wales and a Visiting Medical Officer and Clinical Senior Lecturer at Macquarie University Hospital.',
+      'Dr Kassam completed his cardiology training at St Vincent’s Hospital Sydney, where his specialist training included advanced fellowships in heart failure, cardiac transplantation, electrophysiology, and cardiac device therapy. During his training, he contributed to multiple clinical trials and published research in peer-reviewed medical journals.',
+      'His clinical practice includes general cardiology and advanced electrophysiology, with particular expertise in the diagnosis and treatment of heart rhythm disorders. He performs specialist procedures including pacemaker and defibrillator implantation, electrophysiological studies, and catheter ablation therapies for arrhythmias.',
+      'Dr Kassam undertakes his procedural work at Macquarie University Hospital and is also a Visiting Medical Officer at Griffith Base Hospital, where he contributes to medical education through teaching students and supervising doctors in training.',
     ],
     image: {
       src: '/images/doctors/dr-imran-kassam-cardiologist.webp',
@@ -41,7 +47,7 @@ export const doctors: Doctor[] = [
   {
     slug: 'dr-probal-roy',
     name: 'Dr Probal Roy',
-    qualifications: 'B.Sc.(Med), M.B.B.S (Hons), MPH, FRACP, FCSANZ',
+    postNominals: 'B.Sc.(Med), M.B.B.S (Hons), MPH, FRACP, FCSANZ',
     title: 'Consultant and Interventional Cardiologist',
     appointments: [
       'Staff Specialist, Concord Repatriation General Hospital',
@@ -54,12 +60,27 @@ export const doctors: Doctor[] = [
       'Interventional cardiology',
       'Coronary angioplasty and stenting',
     ],
+    subspecialties: ['Interventional Cardiology'],
+    areasOfExpertise: [
+      'Pulmonary Hypertension',
+      'Unstable Angina',
+      'Palpitations',
+      'Low Blood Pressure',
+      'Hypertrophic Cardiomyopathy',
+      'Heart Muscle Disease',
+      'Heart Attack',
+      'Chest Pain',
+      'Bradycardia',
+      'Atrial Tachycardia',
+    ],
     bio: [
-      'Dr Roy is a medical graduate from the University of New South Wales and completed his cardiology training at Concord Repatriation General Hospital, Sydney. He subsequently undertook interventional cardiology fellowships at The Royal Melbourne Hospital, Victoria and Washington Hospital Center, Washington DC, USA.',
-      'He is currently appointed at Concord Repatriation General Hospital as a Staff Specialist (Interventional Cardiologist) and at Macquarie University and Mater Hospitals as a Visiting Medical Officer.',
-      'Dr Roy has academic interests. He has a Master of Public Health in clinical research methods from The Johns Hopkins University, Baltimore, USA. He has authored several publications in peer reviewed journals on topical issues in his field.',
-      'Dr Roy is a senior lecturer at The University of Sydney and Clinical Associate Professor at Macquarie University, having an active role in medical student teaching. He is also involved in the training and welfare of junior doctors at Concord Hospital.',
-      'Dr Roy’s clinical interests are in general and interventional (coronary angioplasty and stenting) cardiology.',
+      'Dr Probal Roy is a Consultant and Interventional Cardiologist with expertise in general cardiology and coronary intervention (angioplasty/stent insertion).',
+      'He is a Staff Specialist Interventional Cardiologist at Concord Repatriation General Hospital and Visiting Medical Officer at Macquarie University Hospital. He holds academic appointments as Conjoint Senior Lecturer at University of Sydney and Clinical Associate Professor at Macquarie University. He has been working as a consultant cardiologist across both public and private sectors for the past 17 years.',
+      'Dr Roy graduated in medicine from University of New South Wales with Honours and completed his cardiology training at Concord Repatriation General Hospital in Sydney. He subsequently undertook interventional cardiology fellowships at Royal Melbourne Hospital and Washington Hospital Centre, Washington DC, USA, further developing his expertise in catheter-based cardiac procedures.',
+      'His clinical practice covers the full spectrum of cardiovascular care, with particular interest in coronary artery disease and interventional coronary procedures. He provides evidence-based management tailored to each patient’s cardiovascular needs.',
+      'Dr Roy has a strong academic and research background, holding a Master of Public Health in Clinical Research Methods from Johns Hopkins University. He has authored multiple publications in peer-reviewed medical journals and for many years is strongly committed to medical education and mentorship.',
+      'Alongside his clinical responsibilities, Dr Roy is dedicated to medical education and training. He supervises medical students at Macquarie University Hospital rotating through cardiology. He has been the Director of Prevocational Education and Training at Concord Hospital since 2012, overseeing the training and wellbeing of junior doctors. In addition, he is a Royal Australasian College of Physicians supervisor of advanced trainees in cardiology and is involved in the assessment of overseas trained cardiologists seeking to work in Australia.',
+      'His approach combines experienced advanced expertise in cardiology with a commitment to high-quality, patient-focused care.',
     ],
     image: {
       src: '/images/doctors/dr-probal-roy-cardiologist.webp',

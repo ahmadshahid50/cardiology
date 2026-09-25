@@ -53,6 +53,16 @@ export default function ContactPage() {
                     </a>
                   ))}
                 </div>
+                <p className="flex items-center gap-2.5 rounded-sm font-serif text-xl font-semibold text-ink-900 underline-offset-4 transition-colors hover:text-crimson-700 hover:underline">
+                  <Icon name="fax" size={18} className="shrink-0 text-crimson-500" />
+                  <span>
+                    {/* <span className="sr-only">Fax </span>
+                    <span aria-hidden="true" className="font-medium">
+                      Fax
+                    </span>{' '} */}
+                    {location.fax}
+                  </span>
+                </p>
                 <a
                   href={`mailto:${location.email}`}
                   className="mt-2 inline-flex items-center gap-2.5 rounded-sm text-[0.9375rem] break-all text-ink-600 underline-offset-4 hover:text-crimson-700 hover:underline"

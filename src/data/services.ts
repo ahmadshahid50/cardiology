@@ -230,7 +230,6 @@ export const services: Service[] = [
 export const additionalServices: { name: string }[] = [
   { name: 'Vigo Life 1 Week Heart Monitor' },
   { name: 'Heart Bug' },
-  { name: 'Blood Pressure Patch' },
 ];
 
 export function getService(slug: string): Service | undefined {

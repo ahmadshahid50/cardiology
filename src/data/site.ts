@@ -50,7 +50,8 @@ export const locations: Location[] = [
     region: 'NSW',
     postalCode: '2047',
     country: 'AU',
-    phones: ['(02) 9819 7011', '(02) 9181 5777'],
+    phones: ['(02) 9819 7011'],
+    fax: '(02) 9181 5777',
     email: 'info@advancedcardiology.com.au',
     mapEmbedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.454264383536!2d151.15262837555156!3d-33.852181973233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af93abfb7859%3A0x94c7b1b1c25da9bc!2sl1%2F169%20Victoria%20Rd%2C%20Drummoyne%20NSW%202047%2C%20Australia!5e0!3m2!1sen!2s!4v1779248819009!5m2!1sen!2s',
@@ -69,7 +70,8 @@ export const locations: Location[] = [
     region: 'NSW',
     postalCode: '2576',
     country: 'AU',
-    phones: ['(02) 4862 1855', '(02) 4862 1899'],
+    phones: ['(02) 4862 1855'],
+    fax: '(02) 4862 1899',
     email: 'reception@theshhc.com.au',
     mapEmbedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.769236566715!2d150.4132063755799!3d-34.48337787299768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b13a2bc443a9257%3A0xd2d9addd9a71a580!2sUnit%203%2F2A%20Walker%20St%2C%20Bowral%20NSW%202576%2C%20Australia!5e0!3m2!1sen!2s!4v1779248858439!5m2!1sen!2s',

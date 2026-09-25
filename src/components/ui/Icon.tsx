@@ -152,6 +152,15 @@ const paths: Record<UiIconName, React.ReactNode> = {
       <path d="M6.2 3.5h3l1.4 3.6-1.9 1.4a12.5 12.5 0 0 0 5.8 5.8l1.4-1.9 3.6 1.4v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4.2 5.7a2 2 0 0 1 2-2.2Z" />
     </>
   ),
+  fax: (
+    <>
+      <path d="M7 8.5V4.5a1.5 1.5 0 0 1 1.5-1.5h7A1.5 1.5 0 0 1 17 4.5v4" />
+      <rect x="3" y="8.5" width="18" height="8" rx="2" />
+      <path d="M6.5 12h1" />
+      <path d="M7 16.5h10V20a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-3.5Z" />
+      <path d="M10 6.5h4" />
+    </>
+  ),
   mail: (
     <>
       <rect x="2.5" y="5" width="19" height="14" rx="2.5" />

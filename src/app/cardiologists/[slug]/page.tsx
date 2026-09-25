@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return pageMetadata({
     title: `${doctor.name} — ${doctor.title}`,
-    description: `${doctor.name}, ${doctor.qualifications}. ${doctor.title} at Drummoyne Advanced Cardiology and Southern Highlands Heart Centre.`,
+    description: `${doctor.name}, ${doctor.postNominals}. ${doctor.title} at Drummoyne Advanced Cardiology and Southern Highlands Heart Centre.`,
     path: `/cardiologists/${doctor.slug}`,
     image: doctor.image.src,
   });
@@ -54,14 +54,39 @@ export default async function DoctorProfilePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'Physician',
     name: doctor.name,
-    honorificSuffix: doctor.qualifications,
+    honorificSuffix: doctor.postNominals,
     jobTitle: doctor.title,
     medicalSpecialty: 'Cardiovascular',
     url: absoluteUrl(`/cardiologists/${doctor.slug}`),
     image: absoluteUrl(doctor.image.src),
     worksFor: { '@id': absoluteUrl('/#organization') },
-    knowsAbout: doctor.areasOfPractice,
+    knowsAbout: [
+      ...new Set([
+        ...doctor.areasOfPractice,
+        ...(doctor.subspecialties ?? []),
+        ...(doctor.areasOfExpertise ?? []),
+      ]),
+    ],
+    ...(doctor.registration && {
+      identifier: {
+        '@type': 'PropertyValue',
+        name: doctor.registration.body,
+        value: doctor.registration.number,
+      },
+    }),
   };
+
+  /* Only the sections the practice has actually published for this doctor are
+     rendered, so a profile never shows an empty heading. */
+  const credentials: { label: string; items: string[] }[] = [
+    { label: 'Subspecialties', items: doctor.subspecialties ?? [] },
+    { label: 'Areas of expertise', items: doctor.areasOfExpertise ?? [] },
+    { label: 'Qualifications', items: doctor.qualifications ?? [] },
+    {
+      label: `Registered with ${doctor.registration?.body ?? ''}`.trim(),
+      items: doctor.registration ? [`No. ${doctor.registration.number}`] : [],
+    },
+  ].filter((group) => group.items.length > 0);
 
   return (
     <>
@@ -92,7 +117,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
               </p>
               <h1 className="mt-5 text-4xl sm:text-5xl">{doctor.name}</h1>
               <p className="mt-3 font-sans text-[0.9375rem] font-semibold tracking-[0.06em] text-ink-500 uppercase">
-                {doctor.qualifications}
+                {doctor.postNominals}
               </p>
 
               <ul className="mt-7 space-y-2.5 border-t border-ink-200 pt-7">
@@ -174,6 +199,39 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                   ))}
                 </ul>
               </div>
+
+              {credentials.length > 0 && (
+                <div className="mt-6 rounded-lg border border-ink-100 bg-white p-6 shadow-subtle sm:p-7">
+                  <h2 className="font-serif text-lg font-semibold text-ink-900">
+                    Professional details
+                  </h2>
+                  <dl className="mt-5 divide-y divide-ink-100">
+                    {credentials.map((group, i) => (
+                      <div key={group.label} className={i === 0 ? 'pb-5' : 'py-5 last:pb-0'}>
+                        <dt className="text-[0.75rem] font-semibold tracking-[0.14em] text-ink-500 uppercase">
+                          {group.label}
+                        </dt>
+                        <dd className="mt-3">
+                          <ul className="space-y-2">
+                            {group.items.map((item) => (
+                              <li
+                                key={item}
+                                className="flex items-start gap-2.5 text-[0.9375rem] text-ink-700"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-crimson-500"
+                                />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
             </aside>
           </div>
         </Container>

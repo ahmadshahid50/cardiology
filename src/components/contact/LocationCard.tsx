@@ -104,7 +104,7 @@ export function LocationCard({
               <span className="sr-only">Phone</span>
             </dt>
             <dd className="flex flex-wrap gap-x-4 gap-y-0.5">
-              {(row ? location.phones.slice(0, 1) : location.phones).map((phone) => (
+              {location.phones.map((phone) => (
                 <a
                   key={phone}
                   href={telHref(phone)}
@@ -115,6 +115,17 @@ export function LocationCard({
               ))}
             </dd>
           </div>
+
+          {/* The fax line is never a `tel:` link — it cannot take a call. */}
+          {!row && (
+            <div className="flex items-start gap-3">
+              <dt className="mt-0.5 shrink-0 text-crimson-500">
+                <Icon name="fax" size={17} />
+                <span className="sr-only">Fax</span>
+              </dt>
+              <dd className="rounded-sm text-[0.875rem] font-semibold text-crimson-600 underline-offset-4 transition-colors hover:text-crimson-700 hover:underline">{location.fax}</dd>
+            </div>
+          )}
 
           <div className="flex items-start gap-3">
             <dt className="mt-0.5 shrink-0 text-crimson-500">

@@ -307,7 +307,7 @@ export function Header() {
               {practiceBar.map((half) => (
                 <li key={half.practice} className={cn('rounded-xl p-4', half.surface)}>
                   <PracticeLogo practice={half.practice} width={164} asLink={false} />
-                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+                  <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5">
                     {half.location.phones.map((phone) => (
                       <a
                         key={phone}
@@ -318,6 +318,13 @@ export function Header() {
                         {phone}
                       </a>
                     ))}
+                    <span className="flex items-center gap-2 text-[0.9375rem] text-ink-600">
+                      <Icon name="fax" size={15} className={half.accent} />
+                      <span>
+                        <span aria-hidden="true">Fax</span>
+                        <span className="sr-only">Fax</span> {half.location.fax}
+                      </span>
+                    </span>
                   </div>
                 </li>
               ))}

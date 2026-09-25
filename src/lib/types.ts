@@ -23,6 +23,8 @@ export interface Location {
   postalCode: string;
   country: string;
   phones: string[];
+  /** Fax line for the rooms. Never rendered as a `tel:` link. */
+  fax: string;
   email: string;
   /** Google Maps embed URL captured from the existing site. */
   mapEmbedUrl: string;
@@ -81,16 +83,24 @@ export interface ServiceGroup {
 export interface Doctor {
   slug: Slug;
   name: string;
-  /** Post-nominals exactly as published by the practice. */
-  qualifications: string;
+  /** Post-nominals exactly as published by the practice, e.g. "MBBS, FRACP". */
+  postNominals: string;
   title: string;
   /** Appointments, lectureships and hospital affiliations, verbatim. */
   appointments: string[];
-  /** Full biography, migrated from the existing About page. */
+  /** Full biography, as published by the practice. */
   bio: string[];
   /** Short pull-quote style summary for cards, drawn from the bio. */
   focus: string;
   areasOfPractice: string[];
+  /** Declared subspecialty, where the practice publishes one. */
+  subspecialties?: string[];
+  /** Named areas of expertise, where the practice publishes them. */
+  areasOfExpertise?: string[];
+  /** Primary degrees with awarding institution and year, as published. */
+  qualifications?: string[];
+  /** Regulator registration, e.g. AHPRA. Published exactly as supplied. */
+  registration?: { body: string; number: string };
   image: { src: string; alt: string };
 }
 
@@ -147,6 +157,7 @@ export type IconName =
   | 'patch'
   | 'calendar'
   | 'phone'
+  | 'fax'
   | 'mail'
   | 'clock'
   | 'pin'
