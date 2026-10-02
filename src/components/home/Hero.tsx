@@ -41,7 +41,7 @@ export function Hero() {
               id="hero-heading"
               className="text-[2rem] leading-[1.14] font-bold tracking-[-0.02em] text-ink-900 sm:text-[2.5rem] lg:text-[2.875rem]"
             >
-              Expert Cardiology Care
+              Experienced Comprehensive Care
               <span className="block">in Drummoyne &amp; Bowral</span>
             </h1>
 
